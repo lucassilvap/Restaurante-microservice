@@ -1,0 +1,12 @@
+
+Desafio
+
+Restaurante. Com microservice de estoque,
+de pedidos e um de cozinha, que captura os pedidos no Ms de pedidos e vê se tem os ingredientes 
+no estoque. 
+Começa bem simples, 
+depois vai evoluindo. Usa do Arquitetura limpa
+
+cozinha(8081) escuta a fila (pedido) produz fila (estoque)
+estoque(8082) escuta fila (cozinha) 
+pedido(8083)  produz fila (cozinha)
