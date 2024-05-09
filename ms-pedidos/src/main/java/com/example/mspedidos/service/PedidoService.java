@@ -1,6 +1,6 @@
 package com.example.mspedidos.service;
 
-import com.example.mspedidos.entity.PedidoEntity;
+import com.example.mspedidos.dto.PedidoDto;
 import com.example.mspedidos.kafkaProducerEnviarPedidoParaAcozinha.KafkaProducerEnviaPedidoParaACozinha;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ public class PedidoService {
     private KafkaProducerEnviaPedidoParaACozinha kafkaProducerEnviaPedidoParaACozinha;
 
 
-    public void EnviarPedidoParaACozinha(PedidoEntity pedidoEntity){
-           kafkaProducerEnviaPedidoParaACozinha.EnviarPedidoParaAcozinha(pedidoEntity);
+    public void EnviarPedidoParaACozinha(PedidoDto pedidoDto){
+           kafkaProducerEnviaPedidoParaACozinha.EnviarPedidoParaAcozinha(pedidoDto);
     }
 }

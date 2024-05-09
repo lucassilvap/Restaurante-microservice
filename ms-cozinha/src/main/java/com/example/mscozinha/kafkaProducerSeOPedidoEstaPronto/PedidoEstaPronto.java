@@ -1,6 +1,6 @@
 package com.example.mscozinha.kafkaProducerSeOPedidoEstaPronto;
 
-import com.example.mscozinha.entity.PedidoEntity;
+import com.example.mscozinha.dto.PedidoDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ public class PedidoEstaPronto {
 
     private static final String topic = "pedido-esta-pronto";
 
-    public void pedidoEstaPronto(PedidoEntity pedidoEntity){
-         kafkaTemplate.send(topic, "pedido está pronto");
+    public void pedidoEstaPronto(PedidoDto pedidoDto){
+         kafkaTemplate.send(topic, "Tudo ok Pedido está pronto!!");
     }
 }

@@ -1,6 +1,6 @@
-package com.example.mspedidos.entity;
+package com.example.mspedidos.dto;
 
-public class PedidoEntity {
+public class PedidoDto {
 
     private String pedido;
 
@@ -12,11 +12,11 @@ public class PedidoEntity {
         this.pedido = pedido;
     }
 
-    public PedidoEntity(String pedido) {
+    public PedidoDto(String pedido) {
         this.pedido = pedido;
     }
 
-    public PedidoEntity() {
+    public PedidoDto() {
 
     }
 
