@@ -2,6 +2,7 @@ package com.example.mscozinha.consumerSeChegouAlgumPedidoParaAcozinha;
 
 import com.example.mscozinha.dto.PedidoDto;
 import com.example.mscozinha.entity.PedidoEntity;
+import com.example.mscozinha.kafkaProducerEnviaBaixaEstoque.KafkaEnviarBaixaEstoque;
 import com.example.mscozinha.kafkaProducerSeOPedidoEstaPronto.PedidoEstaPronto;
 import com.example.mscozinha.service.CozinhaService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -25,6 +26,10 @@ public class ConsumerPedidoParaAcozinha {
     @Autowired
     private CozinhaService cozinhaService;
 
+    @Autowired
+    private KafkaEnviarBaixaEstoque kafkaEnviarBaixaEstoque;
+
+
     @KafkaListener(topics = "pedido-para-a-cozinha", groupId = "group_id")
     public void Consumer(String mensagem){
         try {
@@ -32,6 +37,7 @@ public class ConsumerPedidoParaAcozinha {
             System.out.println("Pedido recebido");
             System.out.println(pedidoDto.getPedido());
             cozinhaService.salvarPedido(new PedidoEntity(pedidoDto.getPedido(), LocalDateTime.now()));
+            kafkaEnviarBaixaEstoque.darBaixaEstoque();
             pedidoEstaPronto.pedidoEstaPronto(pedidoDto);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);

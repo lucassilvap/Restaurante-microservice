@@ -1,0 +1,14 @@
+ms-pedidos
+ms-pratos
+ms-cozinha
+ms-estoque
+
+
+
+O fluxo: Ms pedido busca uma lista de pratos no Ms pratos, 
+escolhe um ou mais pratos conforme o cliente pede, 
+gera o pedido e manda pra cozinha.
+ Ms cozinha consulta os ingredientes de cada prato em Ms tem Ms pratos, 
+que retorna uma lista de ids de ingredientes, 
+então Ms cozinha pega essa lista de ids de ingredientes e consulta no estoque, 
+fazendo isso pra cada prato que estiver no pedido 
